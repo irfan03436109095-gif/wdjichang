@@ -215,3 +215,23 @@
   .qh-home-reading [data-home-toc="desktop"] { display:none; }
 }
 @media (min-width:1081px) { .qh-home-mobile-toc { display:none; } }
+/* 青航 1.1.2：广告按内容高度排列，侧栏空间不足时滚动整个广告区。
+   默认 auto 网格行会压缩 overflow:hidden 的广告卡片，裁掉末尾文案。 */
+.qh-page .ad-slot {
+  grid-auto-rows: max-content;
+  align-content: start;
+}
+
+/* 与青航切换单栏的断点保持一致，窄屏广告在正文后完整展开。 */
+@media (max-width: 1080px) {
+  .qh-page.article-page .article-rail,
+  .qh-page .home-rail {
+    position: static;
+    max-height: none;
+  }
+  .qh-page.article-page .article-rail > .ad-slot,
+  .qh-page .home-rail > .ad-slot {
+    overflow: visible;
+  }
+}
+
